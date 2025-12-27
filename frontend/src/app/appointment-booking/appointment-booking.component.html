@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">Book Appointment</div>
+            <div class="card-body">
+                <form (ngSubmit)="book()">
+                    <div class="mb-3">
+                        <label class="form-label">Patient</label>
+                        <select class="form-select" [(ngModel)]="newAppointment.patient" name="patient" required>
+                            <option *ngFor="let p of patients" [ngValue]="p">{{p.name}} (ID: {{p.id}})</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Doctor</label>
+                        <select class="form-select" [(ngModel)]="newAppointment.doctorName" name="doctor" required>
+                            <option *ngFor="let d of doctors" [value]="d">{{d}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date & Time</label>
+                        <input type="datetime-local" class="form-control"
+                            [(ngModel)]="newAppointment.appointmentDateTime" name="dt" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">Appointments Today</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of appointments">
+                            <td>{{a.appointmentDateTime | date:'shortTime'}}</td>
+                            <td>{{a.patient?.name}}</td>
+                            <td>{{a.doctorName}}</td>
+                            <td><span class="badge bg-info">{{a.status}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

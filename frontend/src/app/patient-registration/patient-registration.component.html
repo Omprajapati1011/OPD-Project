@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">New Patient Form</div>
+            <div class="card-body">
+                <form (ngSubmit)="register()">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="newPatient.name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" [(ngModel)]="newPatient.gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" [(ngModel)]="newPatient.age" name="age" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="text" class="form-control" [(ngModel)]="newPatient.phoneNumber" name="phoneNumber"
+                            required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Register Patient</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">Existing Patients List</div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by Name or Phone"
+                        [(ngModel)]="searchQuery">
+                    <button class="btn btn-outline-secondary" type="button" (click)="loadPatients()">Search</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age/Gender</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of patients">
+                            <td>{{p.id}}</td>
+                            <td>{{p.name}}</td>
+                            <td>{{p.age}} / {{p.gender}}</td>
+                            <td>{{p.phoneNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

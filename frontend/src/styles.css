@@ -1,0 +1,68 @@
+/* Global Styles */
+:root {
+    --primary-color: #008080;
+    /* Teal */
+    --primary-dark: #006666;
+    --secondary-color: #f0f8ff;
+    /* AliceBlue */
+    --accent-color: #ff7f50;
+    /* Coral */
+    --text-dark: #2c3e50;
+    --light-bg: #e0f7fa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f5;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+}
+
+/* Overriding Bootstrap defaults */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+.navbar {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color)) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.nav-link {
+    color: white !important;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(0, 128, 128, 0.25);
+}

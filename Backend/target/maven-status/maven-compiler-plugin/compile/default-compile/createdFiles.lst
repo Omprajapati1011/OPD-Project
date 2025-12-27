@@ -1,0 +1,13 @@
+com\opd\minimodule\repository\ConsultationRepository.class
+com\opd\minimodule\service\AppointmentService.class
+com\opd\minimodule\repository\PatientRepository.class
+com\opd\minimodule\controller\AppointmentController.class
+com\opd\minimodule\entity\Patient.class
+com\opd\minimodule\OpdMiniModuleApplication.class
+com\opd\minimodule\repository\AppointmentRepository.class
+com\opd\minimodule\controller\ConsultationController.class
+com\opd\minimodule\service\PatientService.class
+com\opd\minimodule\controller\PatientController.class
+com\opd\minimodule\entity\Appointment.class
+com\opd\minimodule\entity\Consultation.class
+com\opd\minimodule\service\ConsultationService.class

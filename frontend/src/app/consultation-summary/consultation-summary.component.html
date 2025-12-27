@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">New Consultation</div>
+            <div class="card-body">
+                <form (ngSubmit)="save()">
+                    <div class="mb-3">
+                        <label class="form-label">Select Appointment</label>
+                        <select class="form-select" [(ngModel)]="selectedAppointment" name="appt" required>
+                            <option *ngFor="let a of appointments" [ngValue]="a">
+                                {{a.appointmentDateTime | date:'medium'}} - {{a.patient?.name}} ({{a.doctorName}})
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vitals (BP, Temp, etc)</label>
+                        <input type="text" class="form-control" [(ngModel)]="newConsultation.vitals" name="vitals">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Chief Complaint</label>
+                        <input type="text" class="form-control" [(ngModel)]="newConsultation.symptoms" name="symptoms">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" [(ngModel)]="newConsultation.notes" name="notes"
+                            rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Prescription</label>
+                        <textarea class="form-control" [(ngModel)]="newConsultation.prescription" name="prescription"
+                            rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Save Consultation</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Patient History</div>
+            <div class="card-body">
+                <select class="form-select mb-3" [(ngModel)]="selectedPatientId" (change)="onPatientSelect()">
+                    <option [ngValue]="null">Select Patient to View History</option>
+                    <option *ngFor="let p of patients" [value]="p.id">{{p.name}}</option>
+                </select>
+
+                <div *ngIf="history.length === 0 && selectedPatientId" class="text-muted">No history found.</div>
+
+                <div *ngFor="let h of history" class="card mb-2 bg-light">
+                    <div class="card-body">
+                        <h6>{{h.appointment?.appointmentDateTime | date:'mediumDate'}} - {{h.appointment?.doctorName}}
+                        </h6>
+                        <p class="mb-1"><strong>Vitals:</strong> {{h.vitals}}</p>
+                        <p class="mb-1"><strong>Notes:</strong> {{h.notes}}</p>
+                        <p class="mb-0"><strong>Rx:</strong> {{h.prescription}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
